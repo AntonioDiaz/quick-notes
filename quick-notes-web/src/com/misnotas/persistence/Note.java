@@ -15,6 +15,8 @@ import com.google.appengine.api.datastore.Blob;
 @PersistenceCapable(detachable = "true") 
 public class Note {
 
+	
+	
 	@Persistent
 	@PrimaryKey
 	String id;
@@ -34,7 +36,10 @@ public class Note {
 	public Blob getTextBlob() {
 		return textBlob;
 	}
+	
+	
 
+	
 	public void setTextBlob(Blob text) {
 		this.textBlob = text;
 	}
