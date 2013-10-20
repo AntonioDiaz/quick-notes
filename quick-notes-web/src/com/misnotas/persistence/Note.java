@@ -11,17 +11,19 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import com.google.appengine.api.datastore.Blob;
 
 
+
 @PersistenceCapable(detachable = "true") 
 public class Note {
-	
+
 	@Persistent
 	@PrimaryKey
 	String id;
 
+	
 	@Persistent
 	Blob textBlob;
 	
-	public String getId() {
+	public String getId() { 
 		return id;
 	}
 
