@@ -38,8 +38,6 @@ public class Note {
 	}
 	
 	
-
-	
 	public void setTextBlob(Blob text) {
 		this.textBlob = text;
 	}
