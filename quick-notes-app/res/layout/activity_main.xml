@@ -23,6 +23,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="4"
             android:inputType="text"
+            android:background="@color/white"
+			android:padding="5dp"
             android:hint="@string/edit_message" />
 
         <Button
@@ -39,6 +41,8 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:gravity="top|left"
+			android:padding="5dp"
+            android:background="@color/white"
             android:inputType="textMultiLine" />
 
 

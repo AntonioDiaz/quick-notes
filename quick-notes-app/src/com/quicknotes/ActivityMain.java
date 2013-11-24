@@ -1,28 +1,25 @@
 package com.quicknotes;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class ActivityMain extends Activity {
 
+	public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 	protected static final String FILE_NAME = "temp.txt";
-	private Context context;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +35,8 @@ public class ActivityMain extends Activity {
 			bufferedReader = new BufferedReader(inputStreamReader);
 			String line = null;
 			while ((line = bufferedReader.readLine())!=null) {
-				txt.append(line);
+				txt.append(line + LINE_SEPARATOR);
 			}
-
 			inputStream.close();
 			
 		} catch (FileNotFoundException e) {
@@ -50,9 +46,7 @@ public class ActivityMain extends Activity {
 		}
 		EditText editText = (EditText)findViewById(R.id.edit_text);
 		editText.setText(txt);
-		
 		Button saveButton = (Button)this.findViewById(R.id.save_button);
-		context = this;
 		saveButton.setOnClickListener(this.createButtonListener());
 	}
 
@@ -62,8 +56,6 @@ public class ActivityMain extends Activity {
 			public void onClick(View v) {
 				EditText editText = (EditText)findViewById(R.id.edit_text);
 				String myText = editText.getText().toString();
-				Toast.makeText(ActivityMain.this, "vamossss:" + myText, Toast.LENGTH_SHORT).show();
-				
 				/** save text content. */
 				FileOutputStream outputStream;
 				try {
