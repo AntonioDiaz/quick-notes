@@ -1,11 +1,10 @@
 package com.misnotas.persistence;
 
-import java.io.UnsupportedEncodingException;
-
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.google.appengine.api.datastore.Blob;
@@ -44,12 +43,9 @@ public class Note {
 
 	public String getText(){
 		String str = "";
-		try {
-			if (textBlob!=null) {
-				str = new String(textBlob.getBytes(), "UTF-8");
-			}
-		} catch (UnsupportedEncodingException e) {
-			str = "error" + e.getMessage();
+		if (textBlob!=null) {
+			byte[] decodedBytes = Base64.decodeBase64(textBlob.getBytes());
+			str = new String(decodedBytes);
 		}
 		return str;
 	}
