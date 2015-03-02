@@ -1,6 +1,7 @@
 package com.misnotas.servlets;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,7 @@ public class SaveNoteServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String myId = request.getParameter("myId");
 		String myText = request.getParameter("myText");
-		byte[] encodedBytes = Base64.encodeBase64(myText.getBytes());							
+		byte[] encodedBytes = Base64.encodeBase64(myText.getBytes(StandardCharsets.UTF_8));
 		if (myText.length()<MAX_SIZE) {
 			Note note = new Note();
 			note.setId(myId);

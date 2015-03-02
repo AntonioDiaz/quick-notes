@@ -1,5 +1,7 @@
 package com.misnotas.persistence;
 
+import java.nio.charset.StandardCharsets;
+
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -45,7 +47,7 @@ public class Note {
 		String str = "";
 		if (textBlob!=null) {
 			byte[] decodedBytes = Base64.decodeBase64(textBlob.getBytes());
-			str = new String(decodedBytes);
+			str = new String(decodedBytes, StandardCharsets.UTF_8);
 		}
 		return str;
 	}
